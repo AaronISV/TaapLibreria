@@ -6,8 +6,9 @@ app = Flask(__name__)
 #renderiza la ruta de inicio
 @app.route('/')
 def inicio():
-    return render_template('/htmls/agregarAutor.html')
+    return render_template('/templates/index.html')
 
+#guardar datos de form
 @app.route('/guardar_datos', methods=['POST'])
 def guardar_datos():
     AUT_RUT = request.form.get('AUT_RUT')
@@ -32,7 +33,7 @@ def guardar_datos():
     conexion.commit()
     conexion.close()
 
-    return 'Datos guardados con éxito'
+    return '/templates/index.html'
 
 if __name__ == '__main__':
     app.run(debug=True)
